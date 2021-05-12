@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int maxScore(vector<int>& card, int k) {
+        int sum=0,ans=0;
+        for(int i=0;i<k;i++) 
+            sum+=card[i];
+        ans = sum;
+        int n = card.size();
+        for(int end=0;end<k;end++) {
+            sum -= card[k-end-1];
+            sum += card[n-end-1];
+            ans = max(ans,sum);
+        }
+        return ans;
+    }
+};
